@@ -1,0 +1,14 @@
+# Flask Web Framework
+Flask==2.2.5
+
+# File Handling and Security
+werkzeug==2.2.3
+
+# PDF to Word Conversion Library
+pdf2docx==0.5.6
+
+# Logging and Debugging
+gunicorn==20.1.0  # Required for deployment on platforms like Heroku
+
+# Additional Libraries (Optional)
+python-dotenv==1.0.0  # Load environment variables (if needed)
