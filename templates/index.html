@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Word Converter | Free Online Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Free PDF to Word Converter</h1>
+        <p>Upload your PDF file and get a high-quality Word document in seconds!</p>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="messages">
+                    {% for category, message in messages %}
+                        <div class="alert {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- File Upload Form -->
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".pdf" required>
+            <button type="submit">Convert to Word</button>
+        </form>
+
+        <br>
+
+        <!-- Download Section -->
+        {% if request.args.get('filename') %}
+            <div class="download-section">
+                <p>✅ Your file is ready! Click below to download:</p>
+                <a class="download-btn" href="{{ url_for('download_file', filename=request.args.get('filename')) }}">Download Word File</a>
+            </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>
